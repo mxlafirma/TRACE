@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>LA FIRMA MX - Sistema de Gestión & Cotizaciones</title>
+  <title>TRACE - Sistema de Gestión & Cotizaciones</title>
   
   <!-- Configuración PWA para Celulares -->
   <meta name="theme-color" content="#09090b">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="LA FIRMA MX">
+  <meta name="apple-mobile-web-app-title" content="TRACE">
   <link rel="apple-touch-icon" href="https://img.icons8.com/isometric-line/180/ffffff/t-shirt.png">
   
   <!-- Tailwind CSS CDN -->
@@ -724,7 +724,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
         dtfAncho: 58,
         dtfAlto: 100,
         dtfPrecio: 0.06,
-        margenDefault: 40,
+        margenDefault: 30,
         manoObraDefault: 20,
         empaqueDefault: 3,
         planchadoDefault: 5,
@@ -734,7 +734,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
         cloudKey: ''
       },
       materiales: [
-        { id: 1, nombre: 'Playera Negra 100% Algodón (Yazbek)', categoria: 'Playera', costo: 65, fecha: '2026-09-20' },
+        { id: 1, nombre: 'Playera Negra 100% Algodón (EuroCotton)', categoria: 'Playera', costo: 60, fecha: '2026-09-20' },
         { id: 2, nombre: 'Playera Oversized Heavyweight', categoria: 'Playera', costo: 110, fecha: '2026-09-21' },
         { id: 3, nombre: 'Bolsa Celofán Empaque Individual', categoria: 'Empaque', costo: 3, fecha: '2026-09-15' },
         { id: 4, nombre: 'Etiqueta de Cuello Tejida', categoria: 'Etiqueta', costo: 4, fecha: '2026-09-15' }
@@ -745,8 +745,8 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
       pedidos: [],
       gastos: [],
       inventario: [
-        { id: 1, producto: 'Playera Negra Yazbek', talla: 'M', color: 'Negro', cantidad: 15, costo: 65, precioVenta: 150 },
-        { id: 2, producto: 'Playera Blanca Yazbek', talla: 'L', color: 'Blanco', cantidad: 8, costo: 60, precioVenta: 140 }
+        { id: 1, producto: 'Playera Negra Eurocotton', talla: 'M', color: 'Negro', cantidad: 15, costo: 65, precioVenta: 150 },
+        { id: 2, producto: 'Playera Blanca Eurocotton', talla: 'L', color: 'Blanco', cantidad: 8, costo: 60, precioVenta: 140 }
       ]
     };
 
@@ -826,7 +826,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
       const manoObraTotal = parseFloat(document.getElementById('cot-mano-obra').value) || 0;
       const otrosGastosTotal = parseFloat(document.getElementById('cot-otros').value) || 0;
       
-      const margenPorcentaje = parseFloat(document.getElementById('cot-margen').value) || 40;
+      const margenPorcentaje = parseFloat(document.getElementById('cot-margen').value) || 30;
       document.getElementById('cot-margen-val').innerText = `${margenPorcentaje}%`;
 
       // Cálculo del DTF por cm² basado en la tarifa del metro
@@ -879,7 +879,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
     function resetCotizadorForm() {
       document.getElementById('cot-nombre').value = '';
       document.getElementById('cot-cantidad').value = 1;
-      document.getElementById('cot-costo-playera').value = 65;
+      document.getElementById('cot-costo-playera').value = 60;
       document.getElementById('cot-dtf-ancho').value = 28;
       document.getElementById('cot-dtf-alto').value = 40;
       calcularCotizacion();
@@ -1254,7 +1254,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
       if (!producto) return;
       const talla = prompt("Talla (S, M, L, XL):", "M");
       const cantidad = parseInt(prompt("Cantidad disponible:", "10")) || 0;
-      const costo = parseFloat(prompt("Costo unitario ($):", "65")) || 0;
+      const costo = parseFloat(prompt("Costo unitario ($):", "60")) || 0;
 
       appState.inventario.push({
         id: Date.now(),
@@ -1340,7 +1340,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
       const element = document.getElementById('documento-cotizacion-imprimible');
       const opt = {
         margin:       0.5,
-        filename:     `Cotizacion_LaFirmaMX.pdf`,
+        filename:     `Cotizacion_TRACE.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2 },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -1353,7 +1353,7 @@ header .lf-brand-logo{display:block;width:100px;height:42px;object-fit:contain;o
       const total = document.getElementById('doc-total-precio').innerText;
       const tel = appState.config.telefono || '';
 
-      const mensaje = `Hola *${cliente}*, adjunto tu cotización de *LA FIRMA MX*:%0A%0A` +
+      const mensaje = `Hola *${cliente}*, adjunto tu cotización de *TRACE*:%0A%0A` +
         `*Total Estimado:* ${total}%0A` +
         `*Notas:* ${appState.config.notasCotizacion}%0A%0A` +
         `¡Quedamos a tus órdenes para iniciar tu producción!`;
